@@ -11,17 +11,22 @@ This Forge app implements a custom field type for Jira that allows users to pick
 
 ## Installation
 
-1. Install dependencies:
+1. Register your own copy of this app:
+```bash
+forge register
+```
+
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-2. Deploy the app:
+3. Deploy the app:
 ```bash
 forge deploy --environment development
 ```
 
-3. Install the app on your Jira site:
+4. Install the app on your Jira site:
 ```bash
 forge install --site your-site.atlassian.net --product jira --environment development
 ```
