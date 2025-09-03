@@ -27,8 +27,7 @@ const ContextConfig = () => {
     error: null
   });
   const [configuration, setConfiguration] = useState(() => ({
-    jql: 'project = currentProject() AND status != Done',
-    displayName: 'Related Issues'
+    jql: 'status != Done'
   }));
   const { handleSubmit, register, getFieldId, getValues } = useForm();
 
@@ -124,7 +123,7 @@ const ContextConfig = () => {
   const onSubmit = async () => {
     try {
       setIsLoading(true);
-      const { jql, displayName } = getValues();
+      const { jql } = getValues();
       const jqlToSave = jql || configuration.jql;
       
       // Validate JQL before saving
@@ -145,8 +144,7 @@ const ContextConfig = () => {
       
       await view.submit({
         configuration: {
-          jql: jqlToSave,
-          displayName: displayName || configuration.displayName
+          jql: jqlToSave
         }
       });
     } catch (e) {
@@ -160,18 +158,7 @@ const ContextConfig = () => {
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <FormSection>
-        <Label labelFor={getFieldId('displayName')}>
-          Field Display Name
-        </Label>
-        <Textfield 
-          {...register('displayName')} 
-          defaultValue={configuration.displayName}
-          placeholder="Enter a display name for this field"
-        />
-      </FormSection>
-      
+    <Form onSubmit={handleSubmit(onSubmit)}>      
       <FormSection>
         <Label labelFor={getFieldId('jql')}>
           JQL Query
