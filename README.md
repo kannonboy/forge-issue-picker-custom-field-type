@@ -59,14 +59,13 @@ After installation, administrators can configure the custom field:
 ### Field Display
 
 The field displays:
-- Issue type icon
 - Issue key (as a clickable link)
 - Issue summary
 
 ## Technical Details
 
 - **Edit Component**: Uses Select UI Kit component with typeahead search
-- **View Component**: Displays issue details with icon, key, and summary
+- **View Component**: Displays issue details with key and summary
 - **Configuration**: Allows JQL query and display name customization
 - **API Integration**: Uses Jira REST API v3 for issue search and details
 
