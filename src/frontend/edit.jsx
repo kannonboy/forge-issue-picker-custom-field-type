@@ -122,7 +122,7 @@ const Edit = () => {
   if (!configuration) {
     return (
       <CustomFieldEdit onSubmit={onSubmit}>
-        <Text>Loading configuration...</Text>
+        <Spinner size="small" />
       </CustomFieldEdit>
     );
   }
