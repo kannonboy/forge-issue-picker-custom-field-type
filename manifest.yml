@@ -1,0 +1,50 @@
+modules:
+  function:
+    - key: resolver
+      handler: resolver.handler
+  jira:customFieldType:
+    - key: issue-picker-field-custom-field-type
+      name: Issue Picker
+      description: A custom field that allows picking issues based on configurable JQL queries.
+      type: string
+      resolver:
+        function: resolver
+      view:
+        render: native
+        resource: main
+        experience:
+          - issue-view
+          - portal-view
+      edit:
+        resource: edit
+        render: native
+        isInline: true
+        experience:
+          - issue-create
+          - issue-transition
+          - issue-view
+          - portal-request
+        validation:
+          expression: value == null || value == "" || value.match('^\d+$') != null
+          errorMessage: Please select a valid issue
+      contextConfig:
+        resource: config
+        layout: basic
+        render: native
+resources:
+  - key: main
+    path: src/frontend/index.jsx
+  - key: edit
+    path: src/frontend/edit.jsx
+  - key: config
+    path: src/frontend/context-config.jsx
+permissions:
+  scopes:
+    - read:jira-work
+    - manage:jira-configuration
+app:
+  runtime:
+    name: nodejs22.x
+    memoryMB: 256
+    architecture: arm64
+  id: ari:cloud:ecosystem::app/3917cda2-b38c-45a6-878b-b03dc8d9d261
