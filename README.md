@@ -1,4 +1,4 @@
-# Issue Picker Custom Field
+# Issue Picker Custom Field Type
 
 This Forge app implements a custom field type for Jira that allows users to pick issues based on configurable JQL queries. The field provides a typeahead search experience and displays issue details with icons.
 
