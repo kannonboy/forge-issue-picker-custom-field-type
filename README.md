@@ -33,11 +33,11 @@ After installation, administrators can configure the custom field:
 1. Go to Jira Settings > Issues > Custom Fields
 2. Find the "Issue Picker" field and click "Configure"
 3. Set the **Field Display Name** (e.g., "Related Issues", "Blocked By")
-4. Configure the **JQL Query** to filter available issues (e.g., `project = currentProject() AND status != Done`)
+4. Configure the **JQL Query** to filter available issues (e.g., `status != Done`)
 
 ### Example JQL Queries
 
-- `project = currentProject() AND status != Done` - Issues in the current project that aren't done
+- `status != Done` - Issues that are not in the "Done" state
 - `assignee = currentUser() AND status = "In Progress"` - Current user's in-progress issues
 - `project in (PROJ1, PROJ2) AND type = Bug` - Bugs from specific projects
 - `created >= -30d AND priority = High` - High priority issues created in the last 30 days
@@ -67,7 +67,7 @@ The field displays:
 
 ## Permissions
 
-The app requires the `read:jira-work` scope to access issue data.
+The app requires the `read:jira-work` scope to access issue data and `manage:jira-configuration` to retrieve custom field configuration.
 
 ## Support
 

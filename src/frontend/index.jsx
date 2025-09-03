@@ -6,6 +6,7 @@ import ForgeReconciler, {
   Image,
   Spinner,
   Box,
+  xcss
 } from "@forge/react";
 import { view, requestJira, invoke } from '@forge/bridge';
 
@@ -108,23 +109,20 @@ const View = () => {
     );
   }
 
+  const linkStyle = xcss({    
+    width: '100px'
+  });
+
   // Show issue data
   if (issueData) {
     console.log(issueData);
     return (
-      <Inline space="space.050" alignBlock="center">        
-        {/* Issue key as a link */}
-        <Box>
-          <Link href={issueData.url} openNewTab>
-            <Text weight="bold">{issueData.key}</Text>
-          </Link>
-        </Box>
-        
-        {/* Issue summary */}
-        <Box>
-          <Text>{issueData.summary}</Text>
-        </Box>
-      </Inline>
+    <Inline space="space.100">
+      <Link href={issueData.url} openNewTab>
+        <Text weight="bold">{issueData.key}</Text>
+      </Link>
+      <Text maxLines={1}>{issueData.summary}</Text>
+    </Inline>
     );
   }
 
